@@ -20,7 +20,11 @@ namespace Telephony.Models
 
         public string Browse(string url)
         {
-            throw new NotImplementedException();
+            if (!ValidateUrl(url))
+            {
+                throw new ArgumentException("Invalid URL!");
+            }
+            return $"Browsing: {url}!";
         }
 
         private bool ValidatePhoneNumber(string phoneNumber)
