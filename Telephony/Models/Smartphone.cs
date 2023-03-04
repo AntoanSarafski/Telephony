@@ -31,6 +31,6 @@ namespace Telephony.Models
             => phoneNumber.All(c => Char.IsDigit(c));
 
         private bool ValidateUrl(string url)
-            => url.All(c => Char.IsLetter(c));
+            => url.All(c => !Char.IsDigit(c));
     }
 }
