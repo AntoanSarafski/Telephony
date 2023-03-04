@@ -12,23 +12,25 @@ namespace Telephony
 
             string[] urls = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
+            ICallable callable;
+
             foreach (var phoneNumber in phoneNumbers)
             {
 
-                ICallable phone;
+
                 if (phoneNumber.Length == 10)
                 {
-                    phone = new Smartphone();
+                    callable = new Smartphone();
                     
                 }
                 else
                 {
-                    phone = new StationaryPhone();
+                    callable = new StationaryPhone();
                 }
 
                 try
                 {
-                    Console.WriteLine(phone.Call(phoneNumber));
+                    Console.WriteLine(callable.Call(phoneNumber));
                 }
 
                 catch (ArgumentException ex)
@@ -37,12 +39,14 @@ namespace Telephony
                 }
             }
 
+            IBrowsable browsable = new Smartphone();
+
             foreach (var url in urls)
             {
-                IBrowsable phone = new Smartphone();
+                
                 try
                 {
-                    Console.WriteLine(phone.Browse(url));
+                    Console.WriteLine(browsable.Browse(url));
                 }
 
                 catch (ArgumentException ex)
