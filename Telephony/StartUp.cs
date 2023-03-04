@@ -36,6 +36,20 @@ namespace Telephony
                     Console.WriteLine(ex.Message);
                 }
             }
+
+            foreach (var url in urls)
+            {
+                IBrowsable phone = new Smartphone();
+                try
+                {
+                    Console.WriteLine(phone.Browse(url));
+                }
+
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
     }
 }
